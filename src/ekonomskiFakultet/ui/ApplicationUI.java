@@ -63,6 +63,8 @@ public class ApplicationUI {
 		System.out.println("\tOpcija broj 5 - Rad sa pohadjanjem predmeta");
 		System.out.println("\tOpcija broj 6 - Rad sa predavanjem profesora");
 		System.out.println("\tOpcija broj 7 - Rad sa ispitnim prijavama studenta");
+		System.out.println("\tOpcija broj 7 - Rad sa ispitnim prijavama studenta");
+		System.out.println("\tOpcija broj 7 - Rad sa ispitnim prijavama studenta");
 		System.out.println("\t\t ...");
 		System.out.println("\tOpcija broj 0 - IZLAZ IZ PROGRAMA");
 	}
