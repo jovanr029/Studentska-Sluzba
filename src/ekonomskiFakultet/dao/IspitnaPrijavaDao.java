@@ -172,5 +172,53 @@ public class IspitnaPrijavaDao {
 			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
 		} 		
 	}
+	
+	public static boolean deleteAllIspitnePrijaveForStudent(int studentId) throws Exception {
+		PreparedStatement stmt = null;
+		
+		try {
+			String sql = "DELETE from ispitne_prijave WHERE student_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, studentId);
+
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		} 		
+	}
+	
+	public static boolean deleteAllIspitnePrijaveForPredmet(int predmetID) throws Exception {
+		PreparedStatement stmt = null;
+		
+		try {
+			String sql = "DELETE from ispitne_prijave WHERE predmet_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, predmetID);
+
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		} 		
+	}
+	
+	public static boolean deleteAllIspitnePrijaveForIspitniRok(int rokID) throws Exception {
+		PreparedStatement stmt = null;
+		
+		try {
+			String sql = "DELETE from ispitne_prijave WHERE rok_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, rokID);
+
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		} 		
+	}
 
 }

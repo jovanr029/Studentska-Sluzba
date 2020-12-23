@@ -2,6 +2,7 @@ package ekonomskiFakultet.ui;
 
 import java.util.List;
 
+import ekonomskiFakultet.dao.PredajeDAO;
 import ekonomskiFakultet.dao.ProfesorDAO;
 import ekonomskiFakultet.model.Profesor;
 import ekonomskiFakultet.utils.PomocnaKlasa;
@@ -122,6 +123,7 @@ public class ProfesorUI {
 		Profesor profesor = pronadjiProfesora();
 		if(profesor != null) {
 			try {
+				PredajeDAO.deleteAllPredavanjaByProfesorId(profesor.getId());
 				if(ProfesorDAO.delete(profesor.getId())) {
 					System.out.println("Profesor uspesno obrisan");
 				}

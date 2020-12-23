@@ -88,6 +88,32 @@ public class PohadjaDAO {
 		}
 	}
 	
+	public static boolean deletePohadjanjaByStudentId(int studentID) throws Exception {
+		PreparedStatement stmt = null;
+		try {
+			String sql = "DELETE FROM pohadja WHERE student_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, studentID);
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		}
+	}
 	
+	public static boolean deletePohadjanjaByPredmetId(int predmetID) throws Exception {
+		PreparedStatement stmt = null;
+		try {
+			String sql = "DELETE FROM pohadja WHERE predmet_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, predmetID);
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		}
+	}	
 
 }

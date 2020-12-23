@@ -87,4 +87,32 @@ public class PredajeDAO {
 			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
 		}
 	}
+	
+	public static boolean deleteAllPredavanjaByProfesorId(int profesorID) throws Exception {
+		PreparedStatement stmt = null;
+		try {
+			String sql = "DELETE FROM predaje WHERE profesor_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, profesorID);
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		}
+	}
+	
+	public static boolean deleteAllPredavanjaByPredmetId(int predmetID) throws Exception {
+		PreparedStatement stmt = null;
+		try {
+			String sql = "DELETE FROM predaje WHERE predmet_id = ?";
+
+			stmt = ConnectionManager.getConnection().prepareStatement(sql);
+			int index = 1;
+			stmt.setInt(index++, predmetID);
+			return stmt.executeUpdate() == 1;
+		} finally {
+			try {stmt.close();} catch (Exception ex) {ex.printStackTrace();}
+		}
+	}
 }

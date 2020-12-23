@@ -2,6 +2,8 @@ package ekonomskiFakultet.ui;
 
 import java.util.List;
 
+import ekonomskiFakultet.dao.IspitnaPrijavaDao;
+import ekonomskiFakultet.dao.PohadjaDAO;
 import ekonomskiFakultet.dao.StudentDAO;
 import ekonomskiFakultet.model.Student;
 import ekonomskiFakultet.utils.PomocnaKlasa;
@@ -145,6 +147,8 @@ public class StudentUI {
 		Student student = pronadjiStudenta();
 		try {
 			if(student != null) {
+				PohadjaDAO.deletePohadjanjaByStudentId(student.getId());
+				IspitnaPrijavaDao.deleteAllIspitnePrijaveForStudent(student.getId());
 				if(StudentDAO.delete(student.getId())) {
 					System.out.println("Uspesno obrisan student");
 				}

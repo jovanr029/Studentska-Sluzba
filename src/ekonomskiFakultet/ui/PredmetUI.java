@@ -2,6 +2,9 @@ package ekonomskiFakultet.ui;
 
 import java.util.List;
 
+import ekonomskiFakultet.dao.IspitnaPrijavaDao;
+import ekonomskiFakultet.dao.PohadjaDAO;
+import ekonomskiFakultet.dao.PredajeDAO;
 import ekonomskiFakultet.dao.PredmetDAO;
 import ekonomskiFakultet.model.Predmet;
 import ekonomskiFakultet.utils.PomocnaKlasa;
@@ -143,6 +146,9 @@ public class PredmetUI {
 				System.out.println("Ne postoji predmet sa zadatim id-jem" + id);
 				return;
 			}
+			IspitnaPrijavaDao.deleteAllIspitnePrijaveForPredmet(predmet.getId());
+			PohadjaDAO.deletePohadjanjaByPredmetId(predmet.getId());
+			PredajeDAO.deleteAllPredavanjaByPredmetId(predmet.getId());
 			if(PredmetDAO.delete(id)) {
 				System.out.println("Uspesno izbrisan predmet");
 			}	

@@ -3,6 +3,7 @@ package ekonomskiFakultet.ui;
 import java.sql.Date;
 import java.util.List;
 
+import ekonomskiFakultet.dao.IspitnaPrijavaDao;
 import ekonomskiFakultet.dao.IspitniRokDAO;
 import ekonomskiFakultet.model.IspitniRok;
 import ekonomskiFakultet.utils.PomocnaKlasa;
@@ -121,6 +122,7 @@ public class IspitniRokUI {
 		IspitniRok ispitniRok = pronadjiIspitniRok();
 		if(ispitniRok != null) {
 			try {
+				IspitnaPrijavaDao.deleteAllIspitnePrijaveForIspitniRok(ispitniRok.getId());
 				if(IspitniRokDAO.delete(ispitniRok.getId())) {
 					System.out.println("Uspesno obrisan ispitni rok");
 				}
