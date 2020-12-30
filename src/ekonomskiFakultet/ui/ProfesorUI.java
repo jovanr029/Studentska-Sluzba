@@ -4,6 +4,7 @@ import java.util.List;
 
 import ekonomskiFakultet.dao.PredajeDAO;
 import ekonomskiFakultet.dao.ProfesorDAO;
+import ekonomskiFakultet.model.Predmet;
 import ekonomskiFakultet.model.Profesor;
 import ekonomskiFakultet.utils.PomocnaKlasa;
 
@@ -49,7 +50,7 @@ public class ProfesorUI {
 	}
 	
 	public static Profesor pronadjiProfesora() {
-		System.out.println("Unesite id profesora kog zelite da pronadjete:");
+		System.out.println("Unesite id profesora:");
 		int id = PomocnaKlasa.ocitajCeoBroj();
 		try {
 			Profesor profesor = ProfesorDAO.getProfesorById(id);
@@ -67,8 +68,20 @@ public class ProfesorUI {
 	private static void prikaziProfesore() {
 		try {
 			List<Profesor> profesori = ProfesorDAO.getAll();
+			System.out.printf("%-5s %-20s %-20s %-20s %-20s", "Id", "Ime", "Prezime", "Zvanje", "Predmeti" );
+			System.out.println();
+			System.out.println("===========================================================================================");
 			for(Profesor p : profesori) {
-				System.out.println(p);
+				System.out.printf("%-10s %-20s %-20s %-20s",
+						p.getId(),
+						p.getIme(),
+						p.getPrezime(),
+						p.getZvanje()); System.out.println();
+					for(Predmet pr : p.getPredmeti()) {
+						System.out.printf("%-5s %-20s %-20s %-20s %-20s", "", "", "", "", pr.getNaziv());
+						System.out.println();
+					}
+					System.out.println("-------------------------------------------------------------------------------------------");
 			}
 		} catch (Exception e) {
 			System.out.println("Greska u radu sa bazom");

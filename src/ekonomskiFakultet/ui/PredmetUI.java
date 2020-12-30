@@ -74,8 +74,13 @@ public class PredmetUI {
 	private static void prikaziSvePredmete() {
 		try {
 			List<Predmet> predmeti = PredmetDAO.getAll();
+			System.out.printf("%-5s %-20s", "Id", "Naziv");
+			System.out.println();
+			System.out.println("=================================");
 			for(Predmet p : predmeti) {
-				System.out.println(p);
+				System.out.printf("%-5s %-20s", p.getId(), p.getNaziv());
+				System.out.println();
+				System.out.println("----------------------------------");
 			}
 		} catch (Exception e) {
 			System.out.println("Greska u radu sa bazom");
@@ -86,8 +91,13 @@ public class PredmetUI {
 	private static void prikaziSvePredmeteSortirano() {
 		try {
 			List<Predmet> predmeti = PredmetDAO.getAllSortedByNaziv();
+			System.out.printf("%-5s %-20s", "Id", "Naziv");
+			System.out.println();
+			System.out.println("=================================");
 			for(Predmet p : predmeti) {
-				System.out.println(p);
+				System.out.printf("%-5s %-20s", p.getId(), p.getNaziv());
+				System.out.println();
+				System.out.println("----------------------------------");
 			}
 		} catch (Exception e) {
 			System.out.println("Greska u radu sa bazom");

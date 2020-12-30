@@ -5,6 +5,7 @@ import java.util.List;
 import ekonomskiFakultet.dao.IspitnaPrijavaDao;
 import ekonomskiFakultet.dao.PohadjaDAO;
 import ekonomskiFakultet.dao.StudentDAO;
+import ekonomskiFakultet.model.Predmet;
 import ekonomskiFakultet.model.Student;
 import ekonomskiFakultet.utils.PomocnaKlasa;
 
@@ -68,8 +69,20 @@ public class StudentUI {
 	private static void prikaziSveStudente() {
 		try {
 			List<Student> studenti = StudentDAO.getAll();
+			System.out.printf("%-10s %-20s %-20s %-20s %-20s", "Index", "Ime", "Prezime", "Grad", "Predmeti" );
+			System.out.println();
+			System.out.println("===========================================================================================");
 			for(Student s : studenti) {
-				System.out.println(s);
+				System.out.printf("%-10s %-20s %-20s %-20s",
+					s.getIndex(),
+					s.getIme(),
+					s.getPrezime(),
+					s.getGrad()); System.out.println();
+				for(Predmet p : s.getPredmeti()) {
+					System.out.printf("%-10s %-20s %-20s %-20s %-20s", "", "", "", "", p.getNaziv());
+					System.out.println();
+				}
+				System.out.println("-------------------------------------------------------------------------------------------");
 			}
 		} catch (Exception e) {
 			System.out.println("Greska u radu sa bazom");

@@ -11,7 +11,7 @@ import ekonomskiFakultet.model.Profesor;
 
 public class PredajeDAO {
 	
-	public static List<Predmet> getPredmetiByStudentId(int profesorId) throws Exception {
+	public static List<Predmet> getPredmetiByProfesorId(int profesorId) throws Exception {
 		List<Predmet> predmeti = new ArrayList<>();
 		
 		Statement stmt = null;

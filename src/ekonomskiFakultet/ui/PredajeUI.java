@@ -53,7 +53,7 @@ public class PredajeUI {
 		
 		if(profesor != null) {
 			try {
-				List<Predmet> predmeti = PredajeDAO.getPredmetiByStudentId(profesor.getId());
+				List<Predmet> predmeti = PredajeDAO.getPredmetiByProfesorId(profesor.getId());
 				System.out.println("Profesor " + profesor.getIme() + " " + profesor.getPrezime() + " predaje: ");
 				for(Predmet itpr : predmeti) {
 					System.out.println(itpr.getNaziv());

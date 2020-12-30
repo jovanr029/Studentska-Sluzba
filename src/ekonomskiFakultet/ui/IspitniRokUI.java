@@ -66,8 +66,15 @@ public class IspitniRokUI {
 	private static void ispisiRokove() {	
 		try {
 			List<IspitniRok> ispitniRokovi = IspitniRokDAO.getAll();
-			for(IspitniRok itRok : ispitniRokovi) {
-				System.out.println(itRok);
+			System.out.printf("%-5s %-20s %-20s %-20s", "Id", "Naziv", "Pocetak", "Kraj");
+			System.out.println();
+			System.out.println("=============================================================");
+			for(IspitniRok i : ispitniRokovi) {
+				System.out.printf("%-5s %-20s %-20s %-20s",
+						i.getId(),
+						i.getNaziv(),
+						i.getPocetak(),
+						i.getKraj()); System.out.println();
 			}
 		} catch (Exception e) {
 			System.out.println("Greska u radu sa bazom");

@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import ekonomskiFakultet.model.Predmet;
 import ekonomskiFakultet.model.Profesor;
 
 public class ProfesorDAO {
@@ -27,8 +28,10 @@ public class ProfesorDAO {
 				String ime = rset.getString(index++);
 				String prezime = rset.getString(index++);
 				String zvanje = rset.getString(index++);
-
+				List<Predmet> predmeti = PredajeDAO.getPredmetiByProfesorId(id);
+				
 				Profesor profesor = new Profesor(id, ime, prezime, zvanje);
+				profesor.getPredmeti().addAll(predmeti);
 				profesori.add(profesor); 
 			}
 		} finally {
